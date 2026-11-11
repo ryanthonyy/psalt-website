@@ -6,12 +6,12 @@ const Psalt = (() => {
     return r.json();
   }));
 
-  const books = () => json('data/books.json');
-  const places = () => json('data/places.json');
-  const timeline = () => json('data/timeline.json');
-  const daily = () => json('data/daily.json');
+  const books = () => json('/data/books.json');
+  const places = () => json('/data/places.json');
+  const timeline = () => json('/data/timeline.json');
+  const daily = () => json('/data/daily.json');
   /** One book of the KJV: an array of chapters, each an array of verses. */
-  const bible = (id) => json(`bible/${id}.json`);
+  const bible = (id) => json(`/bible/${id}.json`);
 
   const chapterTitle = (book, ch) => `${book.id === 'psalms' ? 'Psalm' : book.name} ${ch}`;
 
@@ -31,7 +31,7 @@ const Psalt = (() => {
   const eraFor = (eras, bookId, ch) =>
     eras.find((e) => e.books.some((b) => b.book === bookId && (!b.chapters || (ch >= b.chapters[0] && ch <= b.chapters[1]))));
 
-  const readUrl = (book, ch, verse) => `read.html?book=${book}&chapter=${ch}${verse ? `&verse=${verse}` : ''}`;
+  const readUrl = (book, ch, verse) => `/read?book=${book}&chapter=${ch}${verse ? `&verse=${verse}` : ''}`;
 
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
   const reEsc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');

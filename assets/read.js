@@ -37,8 +37,8 @@
   const pinned = mentions.map(([id]) => Psalt.place(places, id)).filter((pl) => pl.lat !== null);
   const era = Psalt.eraFor(timeline.eras, book.id, ch);
   const ctx = [];
-  if (pinned.length) ctx.push(`<a class="chip" href="map.html?book=${book.id}&chapter=${ch}">${Psalt.ICON.map} Map · ${pinned.length} place${pinned.length === 1 ? '' : 's'}</a>`);
-  if (era) ctx.push(`<a class="chip" href="timeline.html#${era.id}">${Psalt.ICON.time} ${Psalt.esc(era.name)}</a>`);
+  if (pinned.length) ctx.push(`<a class="chip" href="/map?book=${book.id}&chapter=${ch}">${Psalt.ICON.map} Map · ${pinned.length} place${pinned.length === 1 ? '' : 's'}</a>`);
+  if (era) ctx.push(`<a class="chip" href="/timeline#${era.id}">${Psalt.ICON.time} ${Psalt.esc(era.name)}</a>`);
   document.getElementById('ctx').innerHTML = ctx.join('');
 
   // Verses, with mapped place names linked (only the places OpenBible lists for that verse).
@@ -55,7 +55,7 @@
       const pls = byVerse[n] || [];
       const html = Psalt.linkNames(t, pls.map((pl) => pl.name), (name) => {
         const pl = pls.find((x) => x.name === name);
-        return `<a class="place" href="map.html?book=${book.id}&place=${pl.id}" title="See ${Psalt.esc(name)} on the map">${Psalt.esc(name)}</a>`;
+        return `<a class="place" href="/map?book=${book.id}&place=${pl.id}" title="See ${Psalt.esc(name)} on the map">${Psalt.esc(name)}</a>`;
       });
       const hl = v1 && n >= v1 && n <= (v2 || v1) ? ' class="hl"' : '';
       return `<p id="v${n}"${hl}><sup>${n}</sup>${html}</p>`;

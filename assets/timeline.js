@@ -71,6 +71,6 @@
     })
   );
 
-  // Arriving from a link like timeline.html#exile: scroll to that era once it exists.
+  // Arriving from a link like timeline#exile: scroll to that era once it exists.
   if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
 })();

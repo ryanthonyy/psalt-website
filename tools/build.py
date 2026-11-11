@@ -33,7 +33,10 @@ for page in sorted((SRC / 'pages').glob('*.html')):
     out = layout
     for item in ('read', 'map', 'timeline', 'support'):
         out = out.replace('{{nav_%s}}' % item, ' aria-current="page"' if item == nav else '')
-    scripts = '\n'.join(f'<script src="{s}"></script>' for s in meta.get('scripts', '').split() if s)
+    # Local scripts get a leading "/" so pages work at any address (thepsalt.com/map, /read?...).
+    scripts = '\n'.join(
+        f'<script src="{s if s.startswith(("http", "/")) else "/" + s}"></script>' for s in meta.get('scripts', '').split() if s
+    )
     out = (out.replace('{{title}}', meta.get('title', 'Psalt'))
               .replace('{{description}}', meta.get('description', ''))
               .replace('{{head}}', meta.get('head', ''))
