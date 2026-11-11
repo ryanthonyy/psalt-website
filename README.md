@@ -18,5 +18,5 @@ Until a form service is connected, the beta section asks people to email team@th
 
 - Scripture: King James Version, public domain in the United States. Text data from [aruljohn/Bible-kjv](https://github.com/aruljohn/Bible-kjv), MIT License, © 2019 Arul John (see `bible/SOURCE.md`).
 - Place locations: [OpenBible.info Bible Geocoding Data](https://github.com/openbibleinfo/Bible-Geocoding-Data), CC BY 4.0.
-- Map: [Leaflet](https://leafletjs.com) (BSD-2-Clause), tiles © OpenStreetMap contributors and © CARTO.
+- Map: [Leaflet](https://leafletjs.com) (BSD-2-Clause), tiles © OpenStreetMap contributors.
 - Fonts: DM Serif Display, Literata and Manrope from Google Fonts (SIL Open Font License).

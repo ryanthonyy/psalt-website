@@ -72,10 +72,10 @@
   // Map
   const dark = matchMedia('(prefers-color-scheme: dark)').matches;
   const map = L.map('map', { zoomControl: true, worldCopyJump: true, preferCanvas: true }).setView([31.8, 35.2], 6);
-  L.tileLayer(`https://{s}.basemaps.cartocdn.com/${dark ? 'dark_all' : 'rastertiles/voyager'}/{z}/{x}/{y}{r}.png`, {
-    maxZoom: 18,
-    subdomains: 'abcd',
-    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
+  // OpenStreetMap's own tiles: free, no key. In dark mode they're darkened with a CSS filter (see style.css).
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
   const layer = L.layerGroup().addTo(map);
   const markers = new Map();
