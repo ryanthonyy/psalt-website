@@ -1,0 +1,23 @@
+<!--
+title: Bible Map · Every place in the King James Bible · Psalt
+description: An interactive map of the places named in the King James Bible. Choose a book, tap a place and read every verse that mentions it, with an honest note on how sure scholars are of each location.
+nav: map
+footer: none
+head: <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+scripts: https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js assets/map.js
+-->
+<div class="map-page">
+  <div id="map" role="region" aria-label="Map of Bible places"></div>
+  <aside class="panel" aria-label="Places">
+    <div class="panel-controls">
+      <div class="row">
+        <select id="book" aria-label="Book" style="flex:1"></select>
+        <button class="icon-btn" id="key-btn" aria-expanded="false" aria-controls="key" title="About the pin colors">i</button>
+      </div>
+      <input type="search" id="search" placeholder="Search for a place" aria-label="Search for a place" autocomplete="off">
+      <div class="key" id="key" hidden></div>
+    </div>
+    <div class="panel-body" id="body"></div>
+    <p class="credit-line">Place locations and confidence: <a href="https://www.openbible.info/geo/">OpenBible.info</a> (CC BY 4.0), compiled from over seventy modern scholarly sources. Map © OpenStreetMap contributors, © CARTO.</p>
+  </aside>
+</div>

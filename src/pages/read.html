@@ -1,0 +1,19 @@
+<!--
+title: Read the King James Bible · Psalt
+description: Read any chapter of the King James Bible. Place names link to the Psalt Bible map, and each chapter links to its era on the timeline.
+nav: read
+scripts: assets/read.js
+-->
+<div class="wrap narrow reader">
+  <div class="reader-bar">
+    <select id="book" aria-label="Book"></select>
+    <select id="chapter" aria-label="Chapter"></select>
+  </div>
+  <h1 id="title">Loading…</h1>
+  <div class="reader-ctx" id="ctx"></div>
+  <div class="verses" id="verses" aria-live="polite"></div>
+  <div class="pager">
+    <a class="btn outline" id="prev" href="#">← Previous</a>
+    <a class="btn outline" id="next" href="#">Next →</a>
+  </div>
+</div>

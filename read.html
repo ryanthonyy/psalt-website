@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Read the King James Bible · Psalt</title>
+<meta name="description" content="Read any chapter of the King James Bible. Place names link to the Psalt Bible map, and each chapter links to its era on the timeline.">
+<meta property="og:title" content="Read the King James Bible · Psalt">
+<meta property="og:description" content="Read any chapter of the King James Bible. Place names link to the Psalt Bible map, and each chapter links to its era on the timeline.">
+<meta property="og:site_name" content="Psalt">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#EEF2F4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B121D" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Literata:opsz,wght@7..72,400;7..72,600&family=Manrope:wght@500;700;800&display=swap">
+
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="./" aria-label="Psalt home"><span class="p">P</span>salt</a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="read.html" aria-current="page">Read</a>
+      <a href="map.html">Map</a>
+      <a href="timeline.html">Timeline</a>
+      <a href="support.html">Support</a>
+      <a class="btn small" href="./#beta">Join the beta</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap narrow reader">
+  <div class="reader-bar">
+    <select id="book" aria-label="Book"></select>
+    <select id="chapter" aria-label="Chapter"></select>
+  </div>
+  <h1 id="title">Loading…</h1>
+  <div class="reader-ctx" id="ctx"></div>
+  <div class="verses" id="verses" aria-live="polite"></div>
+  <div class="pager">
+    <a class="btn outline" id="prev" href="#">← Previous</a>
+    <a class="btn outline" id="next" href="#">Next →</a>
+  </div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="wordmark" href="./"><span class="p">P</span>salt</a>
+        <p>Read it. Hear it. See it.<br>A free King James Bible app. No ads, no account.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="read.html">Read the KJV</a></li>
+          <li><a href="map.html">Bible map</a></li>
+          <li><a href="timeline.html">Bible timeline</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Psalt</h4>
+        <ul>
+          <li><a href="./#beta">Join the beta</a></li>
+          <li><a href="support.html">Support</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="credits">
+      <span>Contact: team@thepsalt.com · Support: support@thepsalt.com · Privacy: privacy@thepsalt.com</span>
+      <span>Scripture: King James Version (public domain in the United States). Text data: <a href="https://github.com/aruljohn/Bible-kjv">aruljohn/Bible-kjv</a> (MIT License, © 2019 Arul John).</span>
+      <span>Place locations: <a href="https://www.openbible.info/geo/">OpenBible.info</a> (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>). Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, tiles © <a href="https://carto.com/attributions">CARTO</a>.</span>
+      <span>© <span data-year>2026</span> Psalt</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script src="assets/read.js"></script>
+</body>
+</html>

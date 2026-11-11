@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bible Map · Every place in the King James Bible · Psalt</title>
+<meta name="description" content="An interactive map of the places named in the King James Bible. Choose a book, tap a place and read every verse that mentions it, with an honest note on how sure scholars are of each location.">
+<meta property="og:title" content="Bible Map · Every place in the King James Bible · Psalt">
+<meta property="og:description" content="An interactive map of the places named in the King James Bible. Choose a book, tap a place and read every verse that mentions it, with an honest note on how sure scholars are of each location.">
+<meta property="og:site_name" content="Psalt">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#EEF2F4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B121D" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Literata:opsz,wght@7..72,400;7..72,600&family=Manrope:wght@500;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="./" aria-label="Psalt home"><span class="p">P</span>salt</a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="read.html">Read</a>
+      <a href="map.html" aria-current="page">Map</a>
+      <a href="timeline.html">Timeline</a>
+      <a href="support.html">Support</a>
+      <a class="btn small" href="./#beta">Join the beta</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="map-page">
+  <div id="map" role="region" aria-label="Map of Bible places"></div>
+  <aside class="panel" aria-label="Places">
+    <div class="panel-controls">
+      <div class="row">
+        <select id="book" aria-label="Book" style="flex:1"></select>
+        <button class="icon-btn" id="key-btn" aria-expanded="false" aria-controls="key" title="About the pin colors">i</button>
+      </div>
+      <input type="search" id="search" placeholder="Search for a place" aria-label="Search for a place" autocomplete="off">
+      <div class="key" id="key" hidden></div>
+    </div>
+    <div class="panel-body" id="body"></div>
+    <p class="credit-line">Place locations and confidence: <a href="https://www.openbible.info/geo/">OpenBible.info</a> (CC BY 4.0), compiled from over seventy modern scholarly sources. Map © OpenStreetMap contributors, © CARTO.</p>
+  </aside>
+</div>
+</main>
+
+<script src="assets/site.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="assets/map.js"></script>
+</body>
+</html>

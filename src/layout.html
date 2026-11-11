@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:site_name" content="Psalt">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#EEF2F4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B121D" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Literata:opsz,wght@7..72,400;7..72,600&family=Manrope:wght@500;700;800&display=swap">
+{{head}}
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="./" aria-label="Psalt home"><span class="p">P</span>salt</a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="read.html"{{nav_read}}>Read</a>
+      <a href="map.html"{{nav_map}}>Map</a>
+      <a href="timeline.html"{{nav_timeline}}>Timeline</a>
+      <a href="support.html"{{nav_support}}>Support</a>
+      <a class="btn small" href="./#beta">Join the beta</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+{{body}}
+</main>
+{{footer}}
+<script src="assets/site.js"></script>
+{{scripts}}
+</body>
+</html>

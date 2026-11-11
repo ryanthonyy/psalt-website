@@ -1,0 +1,17 @@
+<!--
+title: Bible Timeline · From Creation to the early church · Psalt
+description: The story of the Bible in ten eras, with every book placed in its era and key moments dated, each with an honest note on how firm the date is.
+nav: timeline
+scripts: assets/timeline.js
+-->
+<div class="wrap narrow" style="padding-block:40px 24px;display:grid;gap:18px">
+  <div style="display:grid;gap:10px">
+    <p class="eyebrow">Bible timeline</p>
+    <h1 style="font-size:clamp(38px,6vw,56px)">The story, in order.</h1>
+    <p class="lead">Ten eras from Creation to the early church. Tap a colored dot to see what its date rests on, or a moment to read its chapter.</p>
+    <button class="back" id="key-btn" aria-expanded="false" aria-controls="key">About these dates</button>
+    <div class="key" id="key" hidden></div>
+  </div>
+  <nav class="era-strip" id="strip" aria-label="Eras"></nav>
+  <div class="eras" id="eras"></div>
+</div>
