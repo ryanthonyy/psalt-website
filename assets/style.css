@@ -285,7 +285,7 @@ mark { background: var(--gold-soft); color: inherit; border-radius: 3px; padding
 .leaflet-container { font-family: var(--ui); background: var(--bg); }
 @media (prefers-color-scheme: dark) {
   /* Dark map: invert the light OpenStreetMap tiles and turn the colors back, so water stays blue-ish. */
-  .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(.95) contrast(.9) saturate(.6); }
+  .leaflet-tile-pane, .leaflet-gl-layer { filter: invert(1) hue-rotate(180deg) brightness(.95) contrast(.9) saturate(.6); }
 }
 .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--surface); color: var(--ink); }
 .credit-line { font-size: 12px; color: var(--muted); padding: 12px 16px; border-top: 1px solid var(--line); margin-top: auto; }

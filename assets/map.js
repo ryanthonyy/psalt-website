@@ -71,12 +71,37 @@
 
   // Map
   const dark = matchMedia('(prefers-color-scheme: dark)').matches;
-  const map = L.map('map', { zoomControl: true, worldCopyJump: true, preferCanvas: true }).setView([31.8, 35.2], 6);
-  // OpenStreetMap's own tiles: free, no key. In dark mode they're darkened with a CSS filter (see style.css).
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  }).addTo(map);
+  const map = L.map('map', { zoomControl: true, preferCanvas: true, minZoom: 2, maxBounds: [[-85, -180], [85, 180]], maxBoundsViscosity: 1 }).setView([31.8, 35.2], 6);
+  // Base map: OpenFreeMap (free, no key) with every label switched to English. If it can't load
+  // (an old browser without WebGL, or the service is down), fall back to OpenStreetMap's own tiles.
+  // In dark mode the base map is darkened with a CSS filter (see style.css).
+  const OSM = '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+  let fellBack = false;
+  const fallback = () => {
+    if (fellBack) return;
+    fellBack = true;
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: OSM }).addTo(map);
+  };
+  try {
+    if (typeof L.maplibreGL !== 'function' || typeof maplibregl === 'undefined') throw 0;
+    const gl = L.maplibreGL({
+      style: 'https://tiles.openfreemap.org/styles/positron',
+      attribution: `<a href="https://openfreemap.org">OpenFreeMap</a> ${OSM}`,
+    }).addTo(map);
+    const glMap = gl.getMaplibreMap();
+    const english = ['coalesce', ['get', 'name:en'], ['get', 'name_en'], ['get', 'name:latin'], ['get', 'name']];
+    glMap.on('style.load', () => {
+      glMap.getStyle().layers.forEach((l) => {
+        if (l.type === 'symbol' && l.layout && l.layout['text-field']) glMap.setLayoutProperty(l.id, 'text-field', english);
+      });
+    });
+    glMap.on('error', (e) => {
+      // A failed style (not a single missing tile) means the base map won't draw.
+      if (!glMap.isStyleLoaded() && String(e?.error?.message || '').match(/style|fetch|load/i)) fallback();
+    });
+  } catch {
+    fallback();
+  }
   const layer = L.layerGroup().addTo(map);
   const markers = new Map();
 

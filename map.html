@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Literata:opsz,wght@7..72,400;7..72,600&family=Manrope:wght@500;700;800&display=swap">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css">
 <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
@@ -48,13 +48,15 @@
       <div class="key" id="key" hidden></div>
     </div>
     <div class="panel-body" id="body"></div>
-    <p class="credit-line">Place locations and confidence: <a href="https://www.openbible.info/geo/">OpenBible.info</a> (CC BY 4.0), compiled from over seventy modern scholarly sources. Map © OpenStreetMap contributors.</p>
+    <p class="credit-line">Place locations and confidence: <a href="https://www.openbible.info/geo/">OpenBible.info</a> (CC BY 4.0), compiled from over seventy modern scholarly sources. Map: OpenFreeMap, © OpenStreetMap contributors.</p>
   </aside>
 </div>
 </main>
 
 <script src="/assets/site.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@maplibre/maplibre-gl-leaflet@0.1.3/leaflet-maplibre-gl.js"></script>
 <script src="/assets/map.js"></script>
 </body>
 </html>
