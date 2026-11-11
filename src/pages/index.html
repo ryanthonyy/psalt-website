@@ -4,32 +4,80 @@ description: Psalt is a free King James Bible app for iPhone and Android. Read a
 scripts: assets/home.js
 -->
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <p class="eyebrow">Read it. Hear it. See it.</p>
-      <h1>The whole Bible, brought together.</h1>
-      <p class="lead">Psalt is a free King James Bible app for iPhone and Android. Read and listen, see where every story happened and when, and test what you've learned, all in one place.</p>
-      <div class="hero-actions">
-        <a class="btn" href="#beta">Join the beta</a>
-        <a class="btn outline" href="/map">Explore the map</a>
-      </div>
-      <div class="facts"><span>Free</span><span>No ads</span><span>No account needed</span><span>Coming soon to iPhone and Android</span></div>
+  <svg class="scene" viewBox="0 0 1600 900" preserveAspectRatio="xMaxYMax slice" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="var(--sky-1)"/>
+        <stop offset=".62" stop-color="var(--sky-2)"/>
+        <stop offset="1" stop-color="var(--sky-3)"/>
+      </linearGradient>
+      <radialGradient id="glow" cx="1250" cy="455" r="560" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="var(--sun)" stop-opacity=".95"/>
+        <stop offset=".18" stop-color="var(--sun)" stop-opacity=".45"/>
+        <stop offset=".55" stop-color="var(--sun)" stop-opacity=".12"/>
+        <stop offset="1" stop-color="var(--sun)" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="1600" height="900" fill="url(#sky)"/>
+    <g class="stars" fill="var(--star)">
+      <circle cx="140" cy="90" r="1.6"/><circle cx="330" cy="160" r="1.2"/><circle cx="520" cy="70" r="1.8"/><circle cx="700" cy="140" r="1.1"/>
+      <circle cx="880" cy="60" r="1.5"/><circle cx="1010" cy="170" r="1.2"/><circle cx="1420" cy="80" r="1.6"/><circle cx="1540" cy="190" r="1.1"/>
+      <circle cx="250" cy="250" r="1"/><circle cx="610" cy="230" r="1.3"/><circle cx="1180" cy="110" r="1.2"/>
+    </g>
+    <rect width="1600" height="900" fill="url(#glow)"/>
+    <g stroke="var(--sun)" stroke-width="1.6" opacity=".12" stroke-linecap="round">
+      <path d="M1250 455 L760 170"/><path d="M1250 455 L1000 60"/><path d="M1250 455 L1260 30"/><path d="M1250 455 L1520 70"/><path d="M1250 455 L1600 250"/><path d="M1250 455 L880 330"/>
+    </g>
+    <circle cx="1250" cy="455" r="58" fill="var(--sun)" opacity=".55"/>
+    <circle cx="1250" cy="455" r="40" fill="var(--sun-core)" opacity=".85"/>
+    <path d="M0 640 C 180 600 320 610 470 630 S 760 560 930 590 S 1250 600 1420 575 S 1560 590 1600 585 V900 H0Z" fill="var(--hill-3)"/>
+    <path d="M0 720 C 160 680 300 690 430 700 S 700 640 860 665 S 1000 690 1080 660 L 1250 575 L 1420 655 C 1500 690 1560 680 1600 670 V900 H0Z" fill="var(--hill-2)"/>
+    <g fill="var(--hill-1)">
+      <path d="M0 820 C 200 770 380 790 560 780 S 860 740 990 700 C 1080 670 1170 600 1250 590 C 1330 600 1420 660 1490 700 C 1540 725 1580 740 1600 745 V900 H0Z"/>
+      <rect x="1243" y="420" width="14" height="178" rx="2"/>
+      <rect x="1203" y="462" width="94" height="12" rx="2"/>
+    </g>
+    <path d="M300 900 C 520 860 700 850 860 800 S 1120 690 1236 600" fill="none" stroke="var(--path)" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round" opacity=".7"/>
+    <g class="birds" fill="none" stroke="var(--bird)" stroke-width="2.4" stroke-linecap="round" opacity=".55">
+      <path d="M980 300 q 10 -10 20 0 q 10 -10 20 0"/><path d="M1040 270 q 7 -7 14 0 q 7 -7 14 0"/>
+    </g>
+    <path d="M0 835 C 300 805 560 845 820 852 S 1300 830 1600 860 V900 H0Z" fill="var(--bg)"/>
+  </svg>
+  <div class="wrap hero-copy">
+    <p class="eyebrow">Read it. Hear it. See it.</p>
+    <h1>The whole Bible,<br>brought together.</h1>
+    <p class="lead">Psalt is a free King James Bible app for iPhone and Android. Read and listen, see where every story happened and when, and test what you've learned, all in one place.</p>
+    <div class="hero-actions">
+      <a class="btn" href="#beta">Join the beta</a>
+      <a class="btn outline" href="/map">Explore the map</a>
     </div>
-
-    <article class="card daily" aria-labelledby="daily-label">
-      <div class="daily-top">
-        <p class="eyebrow" id="daily-label">Psalt Daily</p>
-        <span class="muted small" id="daily-date"></span>
-      </div>
-      <blockquote class="scripture" id="daily-text">“The LORD is my shepherd; I shall not want.”</blockquote>
-      <cite id="daily-ref">Psalm 23:1</cite>
-      <div class="daily-actions">
-        <a class="btn small" id="daily-read" href="/read?book=psalms&amp;chapter=23&amp;verse=1">Read in context</a>
-        <button class="btn small outline" id="daily-copy" type="button">Copy verse</button>
-      </div>
-    </article>
+    <div class="facts"><span>Free</span><span>No ads</span><span>No account needed</span><span>Coming soon to iPhone and Android</span></div>
   </div>
 </section>
+
+<div class="wrap hero-cards">
+  <article class="card daily" aria-labelledby="daily-label">
+    <div class="daily-top">
+      <p class="eyebrow" id="daily-label">Psalt Daily</p>
+      <span class="muted small" id="daily-date"></span>
+    </div>
+    <blockquote class="scripture" id="daily-text">“The LORD is my shepherd; I shall not want.”</blockquote>
+    <cite id="daily-ref">Psalm 23:1</cite>
+    <div class="daily-actions">
+      <a class="btn small" id="daily-read" href="/read?book=psalms&amp;chapter=23&amp;verse=1">Read in context</a>
+      <button class="btn small outline" id="daily-copy" type="button">Copy verse</button>
+    </div>
+  </article>
+  <article class="card start" aria-labelledby="start-label">
+    <p class="eyebrow" id="start-label">Read the King James Bible</p>
+    <h2 class="start-title">All 66 books, free, right here.</h2>
+    <p class="muted" style="margin:0">Place names link to the map, and every chapter to its moment on the timeline.</p>
+    <div class="daily-actions">
+      <a class="btn small" href="/read?book=genesis&amp;chapter=1">Start at Genesis</a>
+      <a class="btn small outline" href="/read?book=john&amp;chapter=1">Start with John</a>
+    </div>
+  </article>
+</div>
 
 <section aria-labelledby="features-title">
   <div class="wrap">
