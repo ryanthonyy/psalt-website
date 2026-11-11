@@ -71,7 +71,7 @@
 
   // Map
   const dark = matchMedia('(prefers-color-scheme: dark)').matches;
-  const map = L.map('map', { zoomControl: true, minZoom: 2, maxBounds: [[-85, -180], [85, 180]], maxBoundsViscosity: 1 }).setView([31.8, 35.2], 6);
+  const map = L.map('map', { zoomControl: true, minZoom: 2, maxZoom: 18, maxBounds: [[-85, -180], [85, 180]], maxBoundsViscosity: 1 }).setView([31.8, 35.2], 6);
   // Base map: OpenFreeMap (free, no key) with every label switched to English. If it can't load
   // (an old browser without WebGL, or the service is down), fall back to OpenStreetMap's own tiles.
   // The base map is recolored to Psalt's palette (warm parchment by day, deep navy by night) and kept quiet,
@@ -130,25 +130,25 @@
     fallback();
   }
   // Nearby places group into a numbered circle when zoomed out, and split into their pins as you zoom in.
-  const clustered = typeof L.markerClusterGroup === 'function';
-  const layer = (clustered
-    ? L.markerClusterGroup({
-        maxClusterRadius: 45,
-        showCoverageOnHover: false,
-        spiderfyOnMaxZoom: true,
-        disableClusteringAtZoom: 10,
-        iconCreateFunction: (cluster) => {
-          const n = cluster.getChildCount();
-          const size = n < 10 ? 34 : n < 50 ? 40 : n < 200 ? 48 : 56;
-          return L.divIcon({
-            html: `<span>${n}</span>`,
-            className: 'cluster',
-            iconSize: [size, size],
-          });
-        },
-      })
-    : L.layerGroup()
-  ).addTo(map);
+  // (The grouping add-on needs the map's maxZoom set above, or it stops the whole page.)
+  let layer;
+  try {
+    layer = L.markerClusterGroup({
+      maxClusterRadius: 45,
+      showCoverageOnHover: false,
+      spiderfyOnMaxZoom: true,
+      disableClusteringAtZoom: 10,
+      iconCreateFunction: (cluster) => {
+        const n = cluster.getChildCount();
+        const size = n < 10 ? 34 : n < 50 ? 40 : n < 200 ? 48 : 56;
+        return L.divIcon({ html: `<span>${n}</span>`, className: 'cluster', iconSize: [size, size] });
+      },
+    }).addTo(map);
+  } catch (e) {
+    console.warn('Place grouping unavailable', e);
+    layer = L.layerGroup().addTo(map);
+  }
+  const clustered = typeof layer.zoomToShowLayer === 'function';
   const markers = new Map();
 
   function visible() {
