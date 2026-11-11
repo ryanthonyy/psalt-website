@@ -284,9 +284,18 @@ mark { background: var(--gold-soft); color: inherit; border-radius: 3px; padding
 .back { background: none; border: 0; color: var(--brine); font: 800 14px var(--ui); padding: 0; cursor: pointer; justify-self: start; }
 .leaflet-container { font-family: var(--ui); background: var(--bg); }
 @media (prefers-color-scheme: dark) {
-  /* Dark map: invert the light OpenStreetMap tiles and turn the colors back, so water stays blue-ish. */
-  .leaflet-tile-pane, .leaflet-gl-layer { filter: invert(1) hue-rotate(180deg) brightness(.95) contrast(.9) saturate(.6); }
+  /* Only the fallback map (plain OpenStreetMap images) needs darkening; the main map is recolored in map.js. */
+  .leaflet-tile-pane > .leaflet-layer:not(.leaflet-gl-layer) { filter: invert(1) hue-rotate(180deg) brightness(.95) contrast(.9) saturate(.6); }
 }
+/* Numbered circles for groups of nearby places */
+.cluster { display: grid !important; place-items: center; border-radius: 50%; background: color-mix(in srgb, var(--gold) 30%, transparent); }
+.cluster span {
+  display: grid; place-items: center;
+  width: calc(100% - 8px); height: calc(100% - 8px); border-radius: 50%;
+  background: var(--gold); color: var(--on-gold);
+  font: 800 13px var(--ui); box-shadow: 0 1px 4px rgba(0,0,0,.25);
+}
+.cluster:hover span { filter: brightness(1.08); }
 .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--surface); color: var(--ink); }
 .credit-line { font-size: 12px; color: var(--muted); padding: 12px 16px; border-top: 1px solid var(--line); margin-top: auto; }
 @media (max-width: 860px) {

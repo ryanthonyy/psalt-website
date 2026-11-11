@@ -71,10 +71,11 @@
 
   // Map
   const dark = matchMedia('(prefers-color-scheme: dark)').matches;
-  const map = L.map('map', { zoomControl: true, preferCanvas: true, minZoom: 2, maxBounds: [[-85, -180], [85, 180]], maxBoundsViscosity: 1 }).setView([31.8, 35.2], 6);
+  const map = L.map('map', { zoomControl: true, minZoom: 2, maxBounds: [[-85, -180], [85, 180]], maxBoundsViscosity: 1 }).setView([31.8, 35.2], 6);
   // Base map: OpenFreeMap (free, no key) with every label switched to English. If it can't load
   // (an old browser without WebGL, or the service is down), fall back to OpenStreetMap's own tiles.
-  // In dark mode the base map is darkened with a CSS filter (see style.css).
+  // The base map is recolored to Psalt's palette (warm parchment by day, deep navy by night) and kept quiet,
+  // so the pins carry the color.
   const OSM = '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
   let fellBack = false;
   const fallback = () => {
@@ -90,9 +91,35 @@
     }).addTo(map);
     const glMap = gl.getMaplibreMap();
     const english = ['coalesce', ['get', 'name:en'], ['get', 'name_en'], ['get', 'name:latin'], ['get', 'name']];
+    const P = dark
+      ? { land: '#141F2E', land2: '#18263A', water: '#0D2733', waterLine: '#123543', road: '#22324A', border: '#33445C', text: '#8E99AB', halo: '#141F2E', waterText: '#5E9AA3' }
+      : { land: '#F4EEE2', land2: '#EEE6D6', water: '#C6DEE0', waterLine: '#B3D2D5', road: '#E6DCC8', border: '#CBBFA8', text: '#6F675A', halo: '#F4EEE2', waterText: '#4F8790' };
+    const set = (fn, id, prop, value) => {
+      try {
+        glMap[fn](id, prop, value);
+      } catch {}
+    };
     glMap.on('style.load', () => {
       glMap.getStyle().layers.forEach((l) => {
-        if (l.type === 'symbol' && l.layout && l.layout['text-field']) glMap.setLayoutProperty(l.id, 'text-field', english);
+        const id = l.id.toLowerCase();
+        const isWater = /water|ocean|sea|lake|river/.test(id);
+        if (l.type === 'background') set('setPaintProperty', l.id, 'background-color', P.land);
+        else if (l.type === 'fill') {
+          if (isWater) set('setPaintProperty', l.id, 'fill-color', P.water);
+          else if (/building|aeroway/.test(id)) set('setLayoutProperty', l.id, 'visibility', 'none');
+          else set('setPaintProperty', l.id, 'fill-color', P.land2);
+        } else if (l.type === 'line') {
+          if (isWater) set('setPaintProperty', l.id, 'line-color', P.waterLine);
+          else if (/boundary|admin/.test(id)) {
+            set('setPaintProperty', l.id, 'line-color', P.border);
+          } else set('setPaintProperty', l.id, 'line-color', P.road);
+        } else if (l.type === 'symbol' && l.layout && l.layout['text-field']) {
+          // Every label in English, in soft colors.
+          set('setLayoutProperty', l.id, 'text-field', english);
+          set('setPaintProperty', l.id, 'text-color', isWater ? P.waterText : P.text);
+          set('setPaintProperty', l.id, 'text-halo-color', P.halo);
+          if (/poi|housenumber|road|highway|transport/.test(id)) set('setLayoutProperty', l.id, 'visibility', 'none');
+        }
       });
     });
     glMap.on('error', (e) => {
@@ -102,7 +129,26 @@
   } catch {
     fallback();
   }
-  const layer = L.layerGroup().addTo(map);
+  // Nearby places group into a numbered circle when zoomed out, and split into their pins as you zoom in.
+  const clustered = typeof L.markerClusterGroup === 'function';
+  const layer = (clustered
+    ? L.markerClusterGroup({
+        maxClusterRadius: 45,
+        showCoverageOnHover: false,
+        spiderfyOnMaxZoom: true,
+        disableClusteringAtZoom: 10,
+        iconCreateFunction: (cluster) => {
+          const n = cluster.getChildCount();
+          const size = n < 10 ? 34 : n < 50 ? 40 : n < 200 ? 48 : 56;
+          return L.divIcon({
+            html: `<span>${n}</span>`,
+            className: 'cluster',
+            iconSize: [size, size],
+          });
+        },
+      })
+    : L.layerGroup()
+  ).addTo(map);
   const markers = new Map();
 
   function visible() {
@@ -151,8 +197,10 @@
       if (m) m.setStyle(style(Psalt.place(data, x)));
     });
     const p = Psalt.place(data, id);
-    if (pan && p.lat !== null) map.setView([p.lat, p.lon], Math.max(map.getZoom(), 8));
-    markers.get(id)?.bringToFront();
+    const m = markers.get(id);
+    if (pan && m && clustered) layer.zoomToShowLayer(m, () => map.panTo([p.lat, p.lon]));
+    else if (pan && p.lat !== null) map.setView([p.lat, p.lon], Math.max(map.getZoom(), 8));
+    m?.bringToFront?.();
     syncUrl();
     renderPanel();
   }
