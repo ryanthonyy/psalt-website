@@ -12,6 +12,7 @@ scripts: assets/map.js assets/other.js   (optional)
 
 Run from the repository folder:  python3 tools/build.py
 """
+import hashlib
 import pathlib
 import re
 
@@ -43,5 +44,12 @@ for page in sorted((SRC / 'pages').glob('*.html')):
               .replace('{{scripts}}', scripts)
               .replace('{{footer}}', '' if meta.get('footer') == 'none' else footer)
               .replace('{{body}}', text.strip()))
+    # Cache-busting: add ?v=<content hash> to our own CSS and JS, so browsers never mix a new page
+    # with an old stylesheet after an update.
+    def stamp(m):
+        f = ROOT / m.group(2).lstrip('/')
+        v = hashlib.sha1(f.read_bytes()).hexdigest()[:8] if f.exists() else '0'
+        return f'{m.group(1)}="{m.group(2)}?v={v}"'
+    out = re.sub(r'(href|src)="(/assets/[^"?]+\.(?:css|js))"', stamp, out)
     (ROOT / page.name).write_text(out)
     print('built', page.name)

@@ -312,6 +312,27 @@ mark { background: var(--gold-soft); color: inherit; border-radius: 3px; padding
   /* Only the fallback map (plain OpenStreetMap images) needs darkening; the main map is recolored in map.js. */
   .leaflet-tile-pane > .leaflet-layer:not(.leaflet-gl-layer) { filter: invert(1) hue-rotate(180deg) brightness(.95) contrast(.9) saturate(.6); }
 }
+/* Scene colors (set here rather than in the SVG so every browser applies them) */
+.s-fill-bg { fill: var(--bg); }
+.s-fill-brine-soft { fill: var(--brine-soft); }
+.s-fill-gold-soft { fill: var(--gold-soft); }
+.s-fill-hill-1 { fill: var(--hill-1); }
+.s-fill-hill-2 { fill: var(--hill-2); }
+.s-fill-hill-3 { fill: var(--hill-3); }
+.s-fill-ink { fill: var(--ink); }
+.s-fill-star { fill: var(--star); }
+.s-fill-sun { fill: var(--sun); }
+.s-fill-sun-core { fill: var(--sun-core); }
+.s-fill-surface { fill: var(--surface); }
+.s-stopcolor-sky-1 { stop-color: var(--sky-1); }
+.s-stopcolor-sky-2 { stop-color: var(--sky-2); }
+.s-stopcolor-sky-3 { stop-color: var(--sky-3); }
+.s-stopcolor-sun { stop-color: var(--sun); }
+.s-stroke-bird { stroke: var(--bird); }
+.s-stroke-brine { stroke: var(--brine); }
+.s-stroke-ink { stroke: var(--ink); }
+.s-stroke-path { stroke: var(--path); }
+.s-stroke-sun { stroke: var(--sun); }
 /* Numbered circles for groups of nearby places */
 .cluster { display: grid !important; place-items: center; border-radius: 50%; background: color-mix(in srgb, var(--gold) 30%, transparent); }
 .cluster span {
