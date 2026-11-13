@@ -12,7 +12,7 @@ Pages: Home (verse of the day, features, beta sign-up), Read (the KJV, with plac
 
 ## Beta sign-up form
 
-Until a form service is connected, the beta section asks people to email team@thepsalt.com. To switch on the form: create a free form at formspree.io, copy its endpoint (like `https://formspree.io/f/abcdwxyz`), put it in `data-endpoint=""` on `<form id="beta-form">` in `src/pages/index.html`, and rebuild.
+The form sends sign-ups to Formspree (form "Psalt Beta", owned by team@thepsalt.com), which emails them to team@thepsalt.com. To change the form: create a free form at formspree.io, copy its endpoint (like `https://formspree.io/f/abcdwxyz`), put it in `data-endpoint=""` on `<form id="beta-form">` in `src/pages/index.html`, and rebuild.
 
 ## Credits
 
