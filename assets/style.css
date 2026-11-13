@@ -392,6 +392,7 @@ mark { background: var(--gold-soft); color: inherit; border-radius: 3px; padding
 .quiz-item { display: flex; gap: 14px; align-items: center; padding: 16px 18px; text-decoration: none; color: inherit; transition: border-color .15s, transform .15s; }
 .quiz-item:hover { border-color: var(--gold); transform: translateY(-2px); }
 .quiz-item > span { display: grid; gap: 2px; min-width: 0; }
+.quiz-item > svg { flex: none; }
 .quiz-run { display: grid; gap: 18px; padding-block: 32px 56px; }
 .quiz-progress { height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
 .quiz-progress span { display: block; height: 100%; background: var(--gold); border-radius: 3px; transition: width .3s; }
