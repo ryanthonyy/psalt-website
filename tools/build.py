@@ -32,7 +32,7 @@ for page in sorted((SRC / 'pages').glob('*.html')):
         text = text[m.end():]
     nav = meta.get('nav', '')
     out = layout
-    for item in ('home', 'read', 'map', 'timeline', 'support'):
+    for item in ('home', 'read', 'map', 'timeline', 'quiz', 'support'):
         out = out.replace('{{nav_%s}}' % item, ' aria-current="page"' if item == nav else '')
     # Local scripts get a leading "/" so pages work at any address (thepsalt.com/map, /read?...).
     scripts = '\n'.join(

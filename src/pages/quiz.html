@@ -1,0 +1,30 @@
+<!--
+title: Bible Quiz · Psalt
+description: Test what you know of the King James Bible. Chapter quizzes and Bible trivia where every answer shows the verse it comes from. Earn bronze, silver and gold medals.
+nav: quiz
+scripts: assets/quiz.js
+-->
+<div class="wrap narrow quiz-page">
+  <div id="list">
+    <div style="display:grid;gap:10px;padding-block:40px 8px">
+      <p class="eyebrow">Quiz me</p>
+      <h1 style="font-size:clamp(38px,6vw,56px)">How well do you know it?</h1>
+      <p class="lead">Three questions on a chapter, or six of Bible trivia. Every answer shows the verse it comes from. Get them all right for gold.</p>
+    </div>
+
+    <section class="quiz-section" aria-labelledby="levels-title">
+      <h2 id="levels-title">Bible trivia</h2>
+      <div class="quiz-grid" id="levels"></div>
+    </section>
+
+    <section class="quiz-section" aria-labelledby="chapters-title">
+      <h2 id="chapters-title">Chapter quizzes</h2>
+      <p class="muted small" style="margin:0">Read the chapter first, or test yourself cold.</p>
+      <div class="quiz-grid" id="chapters"></div>
+    </section>
+
+    <p class="muted small" style="padding-bottom:40px">Medals you earn here are saved in this browser. In the Psalt app they're kept with your verse cards and book medals. <a href="/#beta">Join the beta</a></p>
+  </div>
+
+  <div id="run" hidden></div>
+</div>

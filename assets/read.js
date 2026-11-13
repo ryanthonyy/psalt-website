@@ -39,6 +39,8 @@
   const ctx = [];
   if (pinned.length) ctx.push(`<a class="chip" href="/map?book=${book.id}&chapter=${ch}">${Psalt.ICON.map} Map · ${pinned.length} place${pinned.length === 1 ? '' : 's'}</a>`);
   if (era) ctx.push(`<a class="chip" href="/timeline#${era.id}">${Psalt.ICON.time} ${Psalt.esc(era.name)}</a>`);
+  const quizzes = await Psalt.json('/data/quizzes.json').catch(() => null);
+  if (quizzes?.chapters[`${book.id}:${ch}`]) ctx.push(`<a class="chip" href="/quiz?chapter=${book.id}:${ch}">${Psalt.ICON.medal} Quiz me</a>`);
   document.getElementById('ctx').innerHTML = ctx.join('');
 
   // Verses, with mapped place names linked (only the places OpenBible lists for that verse).

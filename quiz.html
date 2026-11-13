@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bible Quiz · Psalt</title>
+<meta name="description" content="Test what you know of the King James Bible. Chapter quizzes and Bible trivia where every answer shows the verse it comes from. Earn bronze, silver and gold medals.">
+<meta property="og:title" content="Bible Quiz · Psalt">
+<meta property="og:description" content="Test what you know of the King James Bible. Chapter quizzes and Bible trivia where every answer shows the verse it comes from. Earn bronze, silver and gold medals.">
+<meta property="og:site_name" content="Psalt">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#EEF2F4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B121D" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Literata:opsz,wght@7..72,400;7..72,600&family=Manrope:wght@500;700;800&display=swap">
+
+<link rel="stylesheet" href="/assets/style.css?v=52840f09">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="/" aria-label="Psalt home"><span class="p">P</span>salt</a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="/">Home</a>
+      <a href="/read">Read</a>
+      <a href="/map">Map</a>
+      <a href="/timeline">Timeline</a>
+      <a href="/quiz" aria-current="page">Quiz</a>
+      <a href="/support">Support</a>
+      <a class="btn small" href="/#beta">Join the beta</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap narrow quiz-page">
+  <div id="list">
+    <div style="display:grid;gap:10px;padding-block:40px 8px">
+      <p class="eyebrow">Quiz me</p>
+      <h1 style="font-size:clamp(38px,6vw,56px)">How well do you know it?</h1>
+      <p class="lead">Three questions on a chapter, or six of Bible trivia. Every answer shows the verse it comes from. Get them all right for gold.</p>
+    </div>
+
+    <section class="quiz-section" aria-labelledby="levels-title">
+      <h2 id="levels-title">Bible trivia</h2>
+      <div class="quiz-grid" id="levels"></div>
+    </section>
+
+    <section class="quiz-section" aria-labelledby="chapters-title">
+      <h2 id="chapters-title">Chapter quizzes</h2>
+      <p class="muted small" style="margin:0">Read the chapter first, or test yourself cold.</p>
+      <div class="quiz-grid" id="chapters"></div>
+    </section>
+
+    <p class="muted small" style="padding-bottom:40px">Medals you earn here are saved in this browser. In the Psalt app they're kept with your verse cards and book medals. <a href="/#beta">Join the beta</a></p>
+  </div>
+
+  <div id="run" hidden></div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="wordmark" href="/"><span class="p">P</span>salt</a>
+        <p>Read it. Hear it. See it.<br>A free King James Bible app. No ads, no account.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="/read">Read the KJV</a></li>
+          <li><a href="/map">Bible map</a></li>
+          <li><a href="/timeline">Bible timeline</a></li>
+          <li><a href="/quiz">Bible quiz</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Psalt</h4>
+        <ul>
+          <li><a href="/#beta">Join the beta</a></li>
+          <li><a href="/support">Support</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="credits">
+      <span>Contact: team@thepsalt.com · Support: support@thepsalt.com · Privacy: privacy@thepsalt.com</span>
+      <span>Scripture: King James Version (public domain in the United States). Text data: <a href="https://github.com/aruljohn/Bible-kjv">aruljohn/Bible-kjv</a> (MIT License, © 2019 Arul John).</span>
+      <span>Place locations: <a href="https://www.openbible.info/geo/">OpenBible.info</a> (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>). Map: <a href="https://openfreemap.org">OpenFreeMap</a>, © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors.</span>
+      <span>© <span data-year>2026</span> Psalt</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=263bffde"></script>
+<script src="/assets/quiz.js?v=d893c868"></script>
+</body>
+</html>
