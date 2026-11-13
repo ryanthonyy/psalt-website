@@ -221,6 +221,10 @@ section { padding-block: 64px; }
 }
 .feature .icon.gold { background: var(--gold-soft); color: var(--gold); }
 .feature p { margin: 0; color: var(--muted); }
+a.feature { color: inherit; text-decoration: none; transition: border-color .15s, transform .15s; grid-template-rows: auto auto auto 1fr auto; }
+a.feature:hover { border-color: var(--gold); transform: translateY(-2px); }
+a.feature:hover h3 { color: var(--gold); }
+.feature .more { font: 800 14px var(--ui); color: var(--brine); margin-top: 6px; align-self: end; }
 .feature .soon { font: 800 11px/1 var(--ui); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 @media (max-width: 900px) { .features { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .features { grid-template-columns: 1fr; } }
